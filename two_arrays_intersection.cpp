@@ -15,8 +15,8 @@ public:
       {
         if (nums1[i] == nums2[j])
         {
-          result.push_back(nums2[j]);
-          nums2.erase(nums2.begin() + j);
+          result.push_back(nums2[j]);     // if a match is found, push it to the vector result
+          nums2.erase(nums2.begin() + j); // erases the pushed element
           break;
         }
       }
