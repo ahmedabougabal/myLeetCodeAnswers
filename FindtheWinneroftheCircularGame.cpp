@@ -12,7 +12,7 @@ public:
     {
       winner = (winner + k) % i;
     }
-    return winner;
+    return winner + 1;
   }
 };
 
