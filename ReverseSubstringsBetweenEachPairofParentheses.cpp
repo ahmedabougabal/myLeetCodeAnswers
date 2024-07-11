@@ -1,30 +1,48 @@
 #include <iostream>
 #include <string>
+#include <stack>
+#include <algorithm>
+
 using namespace std;
 
-// class Solution
-// {
-// public:
-string reverseParentheses(string s)
+class Solution
 {
-  string result = "";
-  for (int i = s.size() - 1; i >= 0; i--)
+public:
+  string reverseParentheses(string s)
   {
-    if (s[i] == '(' || s[i] == ')')
+    stack<string> st;
+    string current;
+
+    for (char c : s)
     {
-      continue;
+      if (c == '(')
+      {
+        st.push(current);
+        current = "";
+      }
+      else if (c == ')')
+      {
+        reverse(current.begin(), current.end());
+        if (!st.empty())
+        {
+          current = st.top() + current;
+          st.pop();
+        }
+      }
+      else
+      {
+        current += c;
+      }
     }
-    result += s[i];
+
+    return current;
   }
-  cout << endl;
-  return result;
-}
-// };
+};
 
 int main()
 {
-
-  string s = "(abcd)";
-  cout << reverseParentheses(s);
+  Solution sol;
+  string input = "(u(love)i)";
+  cout << sol.reverseParentheses(input) << endl; // Output: "iloveu"
   return 0;
 }
