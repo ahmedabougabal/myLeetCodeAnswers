@@ -4,17 +4,15 @@ using namespace std;
 string doubles(string s)
 {
   string result = "";
-  int i = 0;
-  while (i < s.size())
+  for (int current : s)
   {
-    if (i < s.size() - 1 && s[i] == s[i + 1])
+    if (result.empty() || current != result.back())
     {
-      i += 2;
+      result.push_back(current);
     }
     else
     {
-      result += s[i];
-      i++;
+      result.pop_back();
     }
   }
   return result;

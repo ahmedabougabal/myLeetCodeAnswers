@@ -56,6 +56,11 @@ public:
   }
 };
 
+int main()
+{
+  cout << "test: " << 15 % 4;
+  return 0;
+}
 // displaying traversed nodes (not needed for answering the question but can be great for viewing the
 // content of the new created linkedlist)
 // void displayNodes()
