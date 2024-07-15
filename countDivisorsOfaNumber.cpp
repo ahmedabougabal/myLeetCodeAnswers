@@ -1,5 +1,4 @@
 #include <iostream>
-#include <limits.h>
 using namespace std;
 
 int divisors(int n)
