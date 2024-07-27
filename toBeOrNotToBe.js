@@ -1,3 +1,4 @@
+/**30 days of js  */
 /**
  * @param {string} val
  * @return {Object}
