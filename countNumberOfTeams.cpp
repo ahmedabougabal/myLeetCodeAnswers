@@ -8,8 +8,8 @@ class Solution
 public:
   int numTeams(vector<int> &rating)
   {
-    unordered_map<int, int> umap1;
-    unordered_map<int, int> umap2;
+    unordered_map<int, int> less;
+    unordered_map<int, int> more;
     int count = 0;
     int size = rating.size();
     for (int i = 0; i < size; ++i)
@@ -18,11 +18,11 @@ public:
       {
         if (rating[i] < rating[j])
         {
-          umap1[i]++;
+          less[i]++;
         }
         else if (rating[i] > rating[j])
         {
-          umap2[i]++;
+          more[i]++;
         }
       }
     }
@@ -32,11 +32,11 @@ public:
       {
         if (rating[i] < rating[j])
         {
-          count += umap1[j];
+          count += less[j];
         }
         else if (rating[i] > rating[j])
         {
-          count += umap2[j];
+          count += more[j];
         }
       }
     }
