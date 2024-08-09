@@ -10,7 +10,7 @@ public:
     // if(n<=1){
     //     return n;
     // }
-    // return fib(n-1) + fib(n-2); (time complexity : O(n^2))
+    // return fib(n-1) + fib(n-2); (time complexity : O(2^n)) --> exponential
     // method 2 : iterative approach : linear time
     int a = 0;
     int b = 1;
