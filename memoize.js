@@ -3,8 +3,17 @@
  * @return {Function}
  */
 function memoize(fn) {
-  return function (...args) {
-
+    
+  const cache= new Map();
+  return function(...args) {
+      const key = JSON.stringify(args);
+      if(cache.has(key)){
+        return cache.get(key);
+      } else {
+        let result = fn(...args)
+        cache.set(key,result);
+        return result;
+      }
   }
 }
 
