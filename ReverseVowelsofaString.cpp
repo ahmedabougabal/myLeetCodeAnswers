@@ -6,7 +6,6 @@ using namespace std;
 class Solution {
 public:
     string reverseVowels(string s) {
-      // convert s to a vector of chars
       unordered_set<char> vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'};
       int left =0; 
       int right = s.size()-1;
@@ -27,14 +26,3 @@ public:
     }
 };
 
-// int main(){
-//   string s ="ahmed";
-//     vector <char> vec;
-//       for ( char c : s){
-//         vec.push_back(c);
-//       }
-//     for(auto m : vec){
-//       cout << m << " ";
-//     }
-//   return 0;
-// }
