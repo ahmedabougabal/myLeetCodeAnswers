@@ -3,7 +3,7 @@
 #include <unordered_map>
 using namespace std;
 
-
+//* time complexity is O(N) (hashmap + sliding window)
 class Solution {
 public:
     int findTheLongestSubstring(string s) {
