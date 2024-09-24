@@ -30,18 +30,25 @@ public:
                 possible = true;
             }
         }
-        // for (int j = 0; j < map.size(); ++j)
-        // {
-        //     if (map[nums[j]] > 2)
-        //     {
-        //         possible = false;
-        //         break;
-        //     }
-        //     else
-        //     {
-        //         possible = true;
-        //     }
-        // }
         return possible;
     }
 };
+
+//* could have used a ranged for loop in the second loop in the previous logic
+/*
+!ranged for loop
+        for (const auto &val : map)
+        {
+            if (val.second > 2)
+            {
+                possible = false;
+                break;
+            }
+            else
+            {
+                possible = true;
+            }
+        }
+        return possible;
+    }
+*/
