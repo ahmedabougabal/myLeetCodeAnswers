@@ -1,1 +1,5 @@
 output/
+*.exe
+**/[!.]*[!.] # Regex that Ignores all files with no extension
+RankTransformOfAnArray
+.vscode/tasks.json
