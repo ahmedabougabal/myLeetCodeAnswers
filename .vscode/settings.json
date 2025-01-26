@@ -55,6 +55,7 @@
     "xtr1common": "cpp",
     "xutility": "cpp",
     "xtree": "cpp",
-    "functional": "cpp"
+    "functional": "cpp",
+    "algorithm": "cpp"
   }
 }
