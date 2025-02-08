@@ -19,16 +19,16 @@ public:
       }
     }
     //! commented lines are for debugging
-    int i = 0;
+    // int i = 0;
     for (auto &entry : map)
     {
-      cout << "product " << i << ": " << entry.first << " : ";
-      i++;
+      // cout << "product " << i << ": " << entry.first << " : ";
+      // i++;
       int k = entry.second.size();
-      for (const auto pair : entry.second)
-      {
-        cout << "pairs: (" << pair.first << ", " << pair.second << ")" << endl;
-      }
+      // for (const auto pair : entry.second)
+      // {
+      //   cout << "pairs: (" << pair.first << ", " << pair.second << ")" << endl;
+      // }
       count += (k * (k - 1) / 2);
     }
     return 8 * count;
