@@ -1,3 +1,6 @@
+# this is the codeWars version (won't work on leetcode
+# as of different problem requirements )
+
 from collections import deque
 
 
