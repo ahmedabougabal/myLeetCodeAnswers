@@ -12,7 +12,6 @@ struct ListNode
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
-
 class Solution
 {
 public:
@@ -32,17 +31,13 @@ public:
         if (vec.empty())
             return nullptr;
 
-        // now to create a new linked list based on that sorted vector
-        ListNode *
-            current = new ListNode(vec[0]);
-        while (current != nullptr)
+        ListNode *newHead = new ListNode(vec[0]);
+        ListNode *tail = newHead;
+        for (int i = 1; i < vec.size(); ++i)
         {
-            for (int i = 1; i < vec.size(); ++i)
-            {
-                current = new ListNode(vec[i]);
-            }
-            current = current->next;
+            tail->next = new ListNode(vec[i]);
+            tail = tail->next;
         }
-        return current;
+        return newHead;
     }
 };
