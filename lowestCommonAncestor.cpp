@@ -13,57 +13,44 @@ struct TreeNode
 class Solution
 {
 public:
-    vector<int> vecP;
-    vector<int> vecQ;
-    void preorderTraversal1(TreeNode *node)
+    bool findPath(TreeNode *root, TreeNode *target, vector<TreeNode *> &path)
     {
-        if (node == nullptr)
+        if (root == nullptr)
         {
-            return;
+            return false;
         }
-        vecP.push_back(node->val);
-        preorderTraversal1(node->left);
-        preorderTraversal1(node->right);
-    }
-    void preorderTraversal2(TreeNode *node)
-    {
-        if (node == nullptr)
+        path.push_back(root);
+        if (root == target)
         {
-            return;
+            return true;
         }
-        vecQ.push_back(node->val);
-        preorderTraversal2(node->left);
-        preorderTraversal2(node->right);
+        if (findPath(root->left, target, path) || findPath(root->right, target, path))
+        {
+            return true;
+        }
+
+        path.pop_back(); // this is backtracking, removing nodes from the path we moved in and we didnot reach target
+        return false;
     }
+
     TreeNode *lowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q)
     {
-        int target = root->val;
-        TreeNode *res;
-        for (int i : vecP)
+        vector<TreeNode *> vecP;
+        vector<TreeNode *> vecQ;
+        findPath(root, p, vecP);
+        findPath(root, q, vecQ);
+        TreeNode *result = nullptr;
+        for (int i = 0; i < vecP.size() && i < vecQ.size(); ++i)
         {
-            if (i == target)
+            if (vecP[i] == vecQ[i])
             {
-                root = p;
+                result = vecP[i];
+            }
+            else
+            {
+                break;
             }
         }
-        for (int i : vecQ)
-        {
-            if (i == target)
-            {
-                root = q;
-            }
-        }
-        // find the first match (number) in both vectors
-        for (int i = 0; i < vecP.size(); ++i)
-        {
-            for (int j = 0; i < vecQ.size(); ++j)
-            {
-                if (vecP[i] == vecQ[j])
-                {
-                    // return vecP[i];
-                }
-            }
-        }
-        return root;
+        return result;
     }
 };
