@@ -21,26 +21,18 @@ public:
         {
             return 0;
         }
-        auto leftSubTree = heightOfSubTree(node->left);
-        auto rightSubTree = heightOfSubTree(node->right);
+        int leftSubTree = heightOfSubTree(node->left);
+        int rightSubTree = heightOfSubTree(node->right);
+        if (leftSubTree == -1)
+            return -1;
+        if (rightSubTree == -1)
+            return -1;
+        if (abs(leftSubTree - rightSubTree) > 1)
+            return -1;
         return max(leftSubTree, rightSubTree) + 1;
     }
     bool isBalanced(TreeNode *root)
     {
-        bool result;
-
-        if (root == nullptr)
-        {
-            return true;
-        }
-        if (abs(heightOfSubTree(root->left) - heightOfSubTree(root->right)) <= 1 && isBalanced(root->left) && isBalanced(root->right))
-        {
-            result = true;
-        }
-        else
-        {
-            result = false;
-        }
-        return result;
+        return heightOfSubTree(root) != -1;
     }
 };
