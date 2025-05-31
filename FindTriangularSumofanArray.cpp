@@ -11,12 +11,13 @@ public:
             return nums[0];
 
         vector<int> newNums(nums.size() - 1);
-        for (int i = 0; i < nums.size() - 1; ++i)
+        int i = 0;
+        while (i < nums.size() - 1)
         {
             newNums[i] = (nums[i] + nums[i + 1]) % 10;
+            i++;
         }
         nums = newNums;
-        triangularSum(nums);
-        return nums[0];
+        return triangularSum(nums);
     }
 };
