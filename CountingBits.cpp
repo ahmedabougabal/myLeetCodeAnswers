@@ -3,6 +3,7 @@
 #include <string>
 using namespace std;
 
+//! time complexity is O(n*log n)
 class Solution
 {
 public:
@@ -36,6 +37,22 @@ public:
             result.push_back(oneCount);
         }
         return result;
+    }
+};
+
+//* more effiecient DP solution O(N)
+
+class Solution
+{
+public:
+    vector<int> countBits(int n)
+    {
+        vector<int> dp(n + 1, 0); // using tabulation and initializes all numbers up to n with zeros
+        for (int i = 0; i <= n; ++i)
+        {
+            dp[i] = dp[i / 2] + i % 2;
+        }
+        return dp;
     }
 };
 
