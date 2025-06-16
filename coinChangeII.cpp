@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <limits.h>
 using namespace std;
 
 class Solution
@@ -8,24 +7,15 @@ class Solution
 public:
     int change(int amount, vector<int> &coins)
     {
-        vector<int> dp(amount + 1, INT_MAX);
-        dp[0] = 0;
-        for (int i = 1; i <= amount; ++i)
+        vector<unsigned int> dp(amount + 1, 0);
+        dp[0] = 1;
+
+        for (int coin : coins)
         {
-            for (int j = 0; j < coins.size(); ++j)
+            for (int i = coin; i <= amount; ++i)
             {
-                if (coins[j] <= i)
-                {
-                    if (dp[i - coins[j]] != INT_MAX)
-                    {
-                        dp[i] = min(dp[i], 1 + dp[i - coins[j]]);
-                    }
-                }
+                dp[i] += dp[i - coin];
             }
-        }
-        if (dp[amount] == INT_MAX)
-        {
-            return -1;
         }
         return dp[amount];
     }
