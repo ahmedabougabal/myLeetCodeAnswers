@@ -16,6 +16,21 @@ struct ListNode
 class Solution
 {
 public:
+    ListNode *getMid(ListNode *head)
+    {
+        ListNode *slow = head;
+        ListNode *fast = head;
+        ListNode *prev = nullptr;
+
+        while (fast && fast->next)
+        {
+            prev = slow;
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        return prev;
+    }
+
     ListNode *merge(ListNode *l1, ListNode *l2)
     {
         ListNode dummy(0); // tmp node in the stack
