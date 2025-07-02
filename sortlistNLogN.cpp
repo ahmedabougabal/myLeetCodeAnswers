@@ -56,6 +56,16 @@ public:
 
     ListNode *sortList(ListNode *head)
     {
+        if (!head || !head->next)
+            return head;
+
+        ListNode *mid = getMid(head);
+        ListNode *left = head;
+        ListNode *right = mid->next;
+        mid->next = nullptr;
+        left = sortList(left);
+        right = sortList(right);
+        return merge(left, right);
     }
 };
 // class Solution
