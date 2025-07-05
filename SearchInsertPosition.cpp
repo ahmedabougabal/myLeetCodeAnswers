@@ -8,9 +8,10 @@ class Solution
 public:
     int binarySearch(int low, int high, vector<int> vec, int target)
     {
-        int mid = low + (high - low) / 2;
+        int mid;
         while (low <= high)
         {
+            mid = low + (high - low) / 2;
             if (target == vec[mid])
             {
                 return mid;
@@ -23,13 +24,22 @@ public:
 
                 high = mid - 1;
         }
-        return -1;
+        return;
     }
 
     int searchInsert(vector<int> &nums, int target)
     {
         int result;
-        return binarySearch(0, nums.size() - 1, nums, target);
+        if (target)
+        {
+            result = binarySearch(0, nums.size() - 1, nums, target);
+        }
+        else
+        {
+            nums.push_back(target);
+            sort(nums.begin(), nums.end());
+            result = binarySearch(0, nums.size() - 1, nums, target);
+        }
 
         // for (int i = 0; i < nums.size(); ++i)
         // {
