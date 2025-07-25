@@ -63,3 +63,30 @@ public:
         return root;
     }
 };
+
+// optimized version
+
+/*
+
+if (preorder.empty() || inorder.empty())
+        {
+            return nullptr;
+        }
+        TreeNode *root = new TreeNode(preorder[0]);
+
+        auto it = std::find(inorder.begin(), inorder.end(), preorder[0]);
+        int rootIndex = std::distance(inorder.begin(), it);
+        int leftSize = rootIndex;
+
+        vector<int> leftPreorder(preorder.begin() + 1, preorder.begin() + 1 + leftSize);
+        vector<int> rightPreorder(preorder.begin() + 1 + leftSize, preorder.end());
+        vector<int> leftInorder(inorder.begin(), inorder.begin() + rootIndex);
+        vector<int> rightInorder(inorder.begin() + rootIndex + 1, inorder.end());
+
+        root->left = buildTree(leftPreorder, leftInorder);
+        root->right = buildTree(rightPreorder, rightInorder);
+
+        return root;
+
+
+*/
