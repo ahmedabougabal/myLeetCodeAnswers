@@ -7,20 +7,26 @@ public:
   string makeFancyString(string s)
   {
     string result = "";
-    for (int i = 0; i < s.size(); ++i)
+    if (s.empty())
     {
-      if (i + 2 < s.size())
+      return "";
+    }
+    int count = 1;
+    result += s[0];
+
+    for (int i = 1; i < s.size(); ++i)
+    {
+      if (s[i] == s[i - 1])
       {
-        if (s[i] == s[i + 1] && s[i + 1] == s[i + 2])
-        {
-          result += s[i];
-          result += s[i + 1];
-          i += 2;
-        }
-        else
-        {
-          result += s[i];
-        }
+        count++;
+      }
+      else
+      {
+        count = 1;
+      }
+      if (count < 3)
+      {
+        result += s[i];
       }
     }
     return result;
@@ -30,6 +36,7 @@ public:
 int main()
 {
   Solution sol;
-  cout << sol.makeFancyString("leeetcode"); // should be "leetcode"
+  cout << sol.makeFancyString("leeetcode") << endl; // should be "leetcode"
+  cout << sol.makeFancyString("aaabaaaa");          // should be "leetcode"
   return 0;
 }
