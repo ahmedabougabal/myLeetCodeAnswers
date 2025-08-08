@@ -18,13 +18,25 @@ public:
     {
         ListNode dummy;
         ListNode *tail = &dummy;
+        int carry = 0;
 
-        while (l1 && l2)
+        while (l1 || l2 || carry)
         {
-            tail->next = new ListNode((l1->val + l2->val) % 10);
+            int x = l1 ? l1->val : 0;
+            int y = l2 ? l2->val : 0;
+            int sum = carry + x + y;
+            int digit = sum % 10;
+            carry = sum / 10;
+            tail->next = new ListNode(digit);
             tail = tail->next;
-            l1 = l1->next;
-            l2 = l2->next;
+            if (l1)
+            {
+                l1 = l1->next;
+            }
+            if (l2)
+            {
+                l2 = l2->next;
+            }
         }
         return dummy.next;
     }
