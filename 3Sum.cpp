@@ -6,13 +6,6 @@ using namespace std;
 class Solution
 {
 public:
-    // void removeTripletDuplicatesFromVectorOfVectors(vector<vector<int>> &vec)
-    // {
-    //     sort(vec.begin(), vec.end());
-    //     auto last = std::unique(vec.begin(), vec.end());
-    //     vec.erase(last, vec.end());
-    // }
-
     //[nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
     vector<vector<int>> threeSum(vector<int> &nums)
     {
@@ -42,12 +35,10 @@ public:
                     if (nums[i] + nums[j] + nums[k] == 0)
                     {
                         result.push_back({nums[i], nums[j], nums[k]});
-                        triplets = {};
                     }
                 }
             }
         }
-        // removeTripletDuplicatesFromVectorOfVectors(result);
         return result;
     }
 };
