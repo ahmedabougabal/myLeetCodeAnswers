@@ -19,23 +19,33 @@ public:
             {
                 continue;
             }
-            for (int j = i + 1; j < nums.size(); ++j)
+            int left = i + 1;
+            int right = nums.size() - 1;
+            while (left < right)
             {
-                if (j > i + 1 && nums[j] == nums[j - 1])
+                int sum = nums[i] + nums[left] + nums[right];
+                if (sum == 0)
                 {
-                    continue;
-                }
-                for (int k = j + 1; k < nums.size(); ++k)
-                {
-                    if (k > j + 1 && nums[k] == nums[k - 1])
-                    {
-                        continue;
-                    }
+                    result.push_back({nums[i], nums[left], nums[right]});
+                    left++;
+                    right--;
 
-                    if (nums[i] + nums[j] + nums[k] == 0)
+                    while (left < right && nums[left] == nums[left - 1])
                     {
-                        result.push_back({nums[i], nums[j], nums[k]});
+                        left++;
                     }
+                    while (left < right && nums[right] == nums[right + 1])
+                    {
+                        right--;
+                    }
+                }
+                else if (sum < 0)
+                {
+                    left++;
+                }
+                else
+                {
+                    right--;
                 }
             }
         }
