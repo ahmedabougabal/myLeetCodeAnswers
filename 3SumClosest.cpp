@@ -6,9 +6,10 @@ using namespace std;
 class Solution
 {
 public:
-    void generateTriplets(vector<int> &nums, int target)
+    int threeSumClosest(vector<int> &nums, int target)
     {
         sort(nums.begin(), nums.end());
+        int closestSum = nums[0] + nums[1] + nums[nums.size() - 1];
         for (int i = 0; i < nums.size(); ++i)
         {
             int left = i + 1;
@@ -18,16 +19,14 @@ public:
                 int sum = nums[i] + nums[left] + nums[right];
                 if (sum == target)
                 {
-                    left++;
-                    right--;
-                    while (left < right && nums[left] == nums[left - 1])
-                    {
-                        left++;
-                    }
-                    while (left < right && nums[right] == nums[right + 1])
-                    {
-                        right--;
-                    }
+                    return sum;
+                }
+                if (abs(target - sum) < abs(closestSum - target))
+                {
+                    /* let target = 1 for example , sum = 2 , closestSum= 3
+                    1 - sum(2) = 1 , closestSum(3) - 1 = 2
+                    */
+                    closestSum = sum;
                 }
                 else if (sum < target)
                 {
@@ -39,9 +38,6 @@ public:
                 }
             }
         }
-    }
-
-    int threeSumClosest(vector<int> &nums, int target)
-    {
+        return closestSum;
     }
 };
