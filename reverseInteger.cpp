@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <limits.h>
 using namespace std;
 
 // todo
@@ -12,23 +13,26 @@ class Solution
 public:
     int reverse(int x)
     {
-        int result;
+        long long result;
+        if (x >= INT_MAX || x <= INT_MIN)
+        {
+            return 0;
+        }
         // integer to string
         int negativeNum;
         if (x < 0)
         {
-            long long newX = static_cast<long long>(x);
-            newX *= -1;
-            string convertNegativeNumToString = to_string(newX);
+            x *= -1;
+            string convertNegativeNumToString = to_string(x);
             std::reverse(convertNegativeNumToString.begin(), convertNegativeNumToString.end());
-            negativeNum = stoi(convertNegativeNumToString);
+            negativeNum = stoll(convertNegativeNumToString);
             return negativeNum * -1;
         }
         else
         {
             string convertNumToString = to_string(x);
             std::reverse(convertNumToString.begin(), convertNumToString.end());
-            result = stoi(convertNumToString);
+            result = stoll(convertNumToString);
         }
         return result;
     }
