@@ -19,14 +19,14 @@ public:
             return 0;
         }
         // integer to string
-        int negativeNum;
+        long long negativeNum;
         if (x < 0)
         {
             x *= -1;
             string convertNegativeNumToString = to_string(x);
             std::reverse(convertNegativeNumToString.begin(), convertNegativeNumToString.end());
-            negativeNum = stoll(convertNegativeNumToString);
-            return negativeNum * -1;
+            negativeNum = stoll(convertNegativeNumToString) * -1;
+            return negativeNum;
         }
         else
         {
